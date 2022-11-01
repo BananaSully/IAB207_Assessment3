@@ -32,7 +32,7 @@ class Events(db.Model):
     __tablename__ = 'events'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
-    #description = db.Column(db.String(200))
+    description = db.Column(db.String(200))
     #venueLocation = db.Column(db.String(100))
     #Genre = db.Column(db.String(50))
     #startTime = db.Column(db.Datetime, default=datetime())
