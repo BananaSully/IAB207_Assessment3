@@ -124,6 +124,9 @@
             <div class="card shadow mb-5">
               <div class="card-body ">
                 <h4 class="text-center">General Info</h4> 
+                
+{% import "bootstrap/form.html" as wtf %}
+{{wtf.render_form(form)}}
                 <div class="form-floating mb-2 w-75 mx-auto">
                   <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                   <label for="floatingInput">Event Name</label>
