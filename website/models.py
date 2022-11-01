@@ -29,7 +29,7 @@ class User(db.Model, UserMixin):
     
 
 class Events(db.Model):
-    __tablename__ = 'events'
+    __tablename__ = 'destination'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     description = db.Column(db.String(200))
