@@ -31,18 +31,18 @@ class User(db.Model, UserMixin):
 class Events(db.Model):
     __tablename__ = 'events'
     id = db.Column(db.Integer, primary_key=True)
-    eventName = db.Column(db.String(80))
-    description = db.Column(db.String(200))
-    venueLocation = db.Column(db.String(100))
-    Genre = db.Column(db.String(50))
+    name = db.Column(db.String(80))
+    #description = db.Column(db.String(200))
+    #venueLocation = db.Column(db.String(100))
+    #Genre = db.Column(db.String(50))
     #startTime = db.Column(db.Datetime, default=datetime())
     #endTime = db.Column(db.Datetime, default=datetime())
     #startDate = db.Column(db.Datetime, default=datetime())
     #endDate = db.Column(db.Datetime, default=datetime())
-    ticketPrice = db.Column(db.Integer)
-    numTicket = db.Column(db.Integer)
-    overview = db.Column(db.String(50))
-    coverImage = db.Column(db.String(400))
+    #ticketPrice = db.Column(db.Integer)
+    #numTicket = db.Column(db.Integer)
+    #overview = db.Column(db.String(50))
+    image = db.Column(db.String(400))
     # ... Create the Comments db.relationship
 	# relation to call destination.comments and comment.destination
     comments = db.relationship('Comment', backref='destination')
