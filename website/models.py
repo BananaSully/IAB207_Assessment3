@@ -20,7 +20,7 @@ class User(db.Model, UserMixin):
 class purchasedTickets(db.Model):  
     user_id = db.Column(db.Integer)
     event_id = db.Column(db.Integer)
-    
+    numPurchasedTickets = db.Column(db.Integer)
 
     
 
@@ -29,8 +29,8 @@ class Tickets(db.Model):
     
 
 class Events(db.Model):
-    __tablename__ = 'destinations'
-    event_id = db.Column(db.Integer, primary_key=True)
+    __tablename__ = 'events'
+    id = db.Column(db.Integer, primary_key=True)
     eventName = db.Column(db.String(80))
     description = db.Column(db.String(200))
     venueLocation = db.Column(db.String(100))
@@ -46,6 +46,7 @@ class Events(db.Model):
     # ... Create the Comments db.relationship
 	# relation to call destination.comments and comment.destination
     comments = db.relationship('Comment', backref='destination')
+    
 
     
 	
