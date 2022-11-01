@@ -6,7 +6,7 @@ from flask_login import UserMixin
 
 class User(db.Model, UserMixin):
     __tablename__='users' # good practice to specify table name
-    user_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), index=True, unique=True, nullable=False)
     emailid = db.Column(db.String(100), index=True, nullable=False)
 	#password is never stored in the DB, an encrypted password is stored
@@ -60,7 +60,7 @@ class Comment(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now())
     #add the foreign keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    destination_id = db.Column(db.Integer, db.ForeignKey('destinations.id'))
+    destination_id = db.Column(db.Integer, db.ForeignKey('events.id'))
 
 
     def __repr__(self):
