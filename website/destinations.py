@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from .models import Destination, Comment
-from .forms import DestinationForm, CommentForm
+from .forms import EventForm, CommentForm
 from . import db, app
 import os
 from werkzeug.utils import secure_filename
@@ -20,7 +20,7 @@ def show(id):
 @login_required
 def create():
   print('Method type: ', request.method)
-  form = DestinationForm()
+  form = EventForm()
   if form.validate_on_submit():
     #call the function that checks and returns image
     db_file_path=check_upload_file(form)
