@@ -30,7 +30,7 @@ def create():
     db.session.add(destination)
     # commit to the database
     db.session.commit()
-    print('Successfully created new travel destination', 'success')
+    print('Successfully created a new Event', 'success')
     #Always end with redirect when form is valid
     return redirect(url_for('destination.create'))
   return render_template('destinations/create.html', form=form)
