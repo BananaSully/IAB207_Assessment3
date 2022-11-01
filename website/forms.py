@@ -7,7 +7,9 @@ ALLOWED_FILE = {'PNG','JPG','png','jpg'}
 
 #Create new destination
 class DestinationForm(FlaskForm):
-  name = StringField('Country', validators=[InputRequired()])
+  eventName = StringField('Event Name', validators=[InputRequired()])
+  venueLocation = StringField('Venue Location', validators=[InputRequired()])
+  
   description = TextAreaField('Description', 
   validators=[InputRequired()])
   image = FileField('Destination Image', validators=[
