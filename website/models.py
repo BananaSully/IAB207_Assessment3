@@ -1,10 +1,12 @@
+from email.policy import default
+from msilib import datasizemask
 from . import db
 from datetime import datetime
 from flask_login import UserMixin
 
 class User(db.Model, UserMixin):
     __tablename__='users' # good practice to specify table name
-    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), index=True, unique=True, nullable=False)
     emailid = db.Column(db.String(100), index=True, nullable=False)
 	#password is never stored in the DB, an encrypted password is stored
@@ -15,14 +17,32 @@ class User(db.Model, UserMixin):
     comments = db.relationship('Comment', backref='user')
 
 
+class purchasedTickets(db.Model):  
+    user_id = db.Column(db.Integer)
+    event_id = db.Column(db.Integer)
+    
 
-class Destination(db.Model):
+    
+
+class Tickets(db.Model):
+    __tablename__ = 'tickets'
+    
+
+class Events(db.Model):
     __tablename__ = 'destinations'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80))
+    event_id = db.Column(db.Integer, primary_key=True)
+    eventName = db.Column(db.String(80))
     description = db.Column(db.String(200))
-    image = db.Column(db.String(400))
-    currency = db.Column(db.String(3))
+    venueLocation = db.Column(db.String(100))
+    Genre = db.Column(db.String(50))
+    startTime = db.Column(db.Datetime, default=datetime())
+    endTime = db.Column(db.Datetime, default=datetime())
+    startDate = db.Column(db.Datetime, default=datetime())
+    endDate = db.Column(db.Datetime, default=datetime())
+    ticketPrice = db.Column(db.Integer)
+    numTicket = db.Column(db.Integer)
+    overview = db.Column(db.String(50))
+    coverImage = db.Column(db.String(400))
     # ... Create the Comments db.relationship
 	# relation to call destination.comments and comment.destination
     comments = db.relationship('Comment', backref='destination')
