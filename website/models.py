@@ -17,10 +17,10 @@ class User(db.Model, UserMixin):
     comments = db.relationship('Comment', backref='user')
 
 
-class purchasedTickets(db.Model):  
-    user_id = db.Column(db.Integer)
-    event_id = db.Column(db.Integer)
-    numPurchasedTickets = db.Column(db.Integer)
+#class purchasedTickets(db.Model):  
+#    user_id = db.Column(db.Integer)
+#    event_id = db.Column(db.Integer)
+#    numPurchasedTickets = db.Column(db.Integer)
 
     
 #Might need:
@@ -35,7 +35,7 @@ class Events(db.Model):
     description = db.Column(db.String(200))
     venueLocation = db.Column(db.String(100))
     Genre = db.Column(db.String(50))
-    startTime = db.Column(db.Datetime, default=datetime.t())
+    startTime = db.Column(db.Datetime, default=datetime())
     endTime = db.Column(db.Datetime, default=datetime())
     startDate = db.Column(db.Datetime, default=datetime())
     endDate = db.Column(db.Datetime, default=datetime())
