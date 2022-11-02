@@ -49,3 +49,8 @@ class RegisterForm(FlaskForm):
 class CommentForm(FlaskForm):
   text = TextAreaField('Comment', [InputRequired()])
   submit = SubmitField('Create')
+
+
+class Purchase_Tickets(FlaskForm):
+  numofTickets = StringField('Number of tickets', [InputRequired()])
+  submit = SubmitField('Purchase Tickets')

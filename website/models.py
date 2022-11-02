@@ -17,35 +17,31 @@ class User(db.Model, UserMixin):
     comments = db.relationship('Comment', backref='user')
 
 
-#class purchasedTickets(db.Model):  
-#    user_id = db.Column(db.Integer)
-#    event_id = db.Column(db.Integer)
-#    numPurchasedTickets = db.Column(db.Integer)
+class purchasedTickets(db.Model):  
+    __tablename__ = "purchasedTickets"
+    user_id = db.Column(db.Integer, primary_key=True)
+    event_id = db.Column(db.Integer)
+    numPurchasedTickets = db.Column(db.Integer)
 
-    
-#Might need:
-#class Tickets(db.Model):
-#   __tablename__ = 'tickets'
-    
 
 class Events(db.Model):
-    __tablename__ = 'destination'
+    __tablename__ = 'events'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     description = db.Column(db.String(200))
-    #venueLocation = db.Column(db.String(100))
-    #Genre = db.Column(db.String(50))
-    #startTime = db.Column(db.Datetime, default=datetime())
-    #endTime = db.Column(db.Datetime, default=datetime())
-    #startDate = db.Column(db.Datetime, default=datetime())
-    #endDate = db.Column(db.Datetime, default=datetime())
-    #ticketPrice = db.Column(db.Integer)
-    #numTicket = db.Column(db.Integer)
-    #overview = db.Column(db.String(50))
+    venueLocation = db.Column(db.String(100))
+    Genre = db.Column(db.String(50))
+    startTime = db.Column(db.DateTime, default=datetime.now())
+    endTime = db.Column(db.DateTime, default=datetime.now())
+    startDate = db.Column(db.DateTime, default=datetime.now())
+    endDate = db.Column(db.DateTime, default=datetime.now())
+    ticketPrice = db.Column(db.Integer)
+    numTicket = db.Column(db.Integer)
+    overview = db.Column(db.String(50))
     image = db.Column(db.String(400))
     # ... Create the Comments db.relationship
 	# relation to call destination.comments and comment.destination
-    comments = db.relationship('Comment', backref='destination')
+    comments = db.relationship('Comment', backref='events')
     
 
     
@@ -60,7 +56,7 @@ class Comment(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now())
     #add the foreign keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    destination_id = db.Column(db.Integer, db.ForeignKey('events.id'))
+    event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
 
 
     def __repr__(self):
