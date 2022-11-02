@@ -71,6 +71,10 @@ def Purchase_Tickets(event):
     # commit to the database
     db.session.commit()
 
+    print('Your tickets have be purchased','success')
+    
+    return redirect(url_for('eventpage', id=event))
+
 
 
 @bp.route('/<destination>/comment', methods = ['GET', 'POST'])  
