@@ -70,9 +70,9 @@ def Purchase_Tickets(event):
     db.session.add(event)
     # commit to the database
     db.session.commit()
-
+  
     print('Your tickets have be purchased','success')
-    
+
     return redirect(url_for('eventpage', id=event))
 
 
