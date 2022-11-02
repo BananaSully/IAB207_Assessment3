@@ -5,15 +5,15 @@ mainbp = Blueprint('main', __name__)
 
 @mainbp.route('/')
 def index():
-    destinations = Events.query.all()    
-    return render_template('index.html', destinations=destinations)
+    events = Events.query.all()    
+    return render_template('index.html', events=events)
 
 @mainbp.route('/search')
 def search():
     if request.args['search']:
         print(request.args['search'])
         dest = "%" + request.args['search'] + '%'
-        destinations = Events.query.filter(Events.description.like(dest)).all()
-        return render_template('index.html', destinations=destinations)
+        event = Events.query.filter(Events.description.like(dest)).all()
+        return render_template('index.html', event=event)
     else:
         return redirect(url_for('main.index'))
