@@ -54,6 +54,6 @@ class CommentForm(FlaskForm):
   submit = SubmitField('Create')
 
 
-class Purchase_Tickets(FlaskForm):
+class PurchaseTickets(FlaskForm):
   numofTickets = StringField('Number of tickets', [InputRequired()])
   submit = SubmitField('Purchase Tickets')
