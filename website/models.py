@@ -42,7 +42,7 @@ class Events(db.Model):
     # ... Create the Comments db.relationship
 	# relation to call destination.comments and comment.destination
     comments = db.relationship('Comment', backref='events')
-
+    
     def __repr__(self): #string print method
         return "<Name: {}>".format(self.name)
 
