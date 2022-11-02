@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from .models import Events, Comment
-from .forms import EventForm, CommentForm
+from .models import Events, Comment, purchasedTickets
+from .forms import EventForm, CommentForm, PurchaseTickets
 from . import db, app
 import os
 from werkzeug.utils import secure_filename
@@ -60,8 +60,17 @@ def check_upload_file(form):
   return db_upload_path
 
 @login_required
-def purchase_tickets(event):
-  form = form
+def Purchase_Tickets(event):
+  print('Method type: ', request.method)
+  form = PurchaseTickets()
+  if form.validate_on_submit():
+    tickets=purchasedTickets(numtickets=form.numofTickets.data,
+                             user=current_user)
+     # add the object to the db session
+    db.session.add(event)
+    # commit to the database
+    db.session.commit()
+
 
 
 @bp.route('/<destination>/comment', methods = ['GET', 'POST'])  
