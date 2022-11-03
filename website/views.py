@@ -19,6 +19,18 @@ def Options():
     else:
         return redirect(url_for('main.index'))
     
+    
+@mainbp.route('/Status')
+def Status():
+    if request.args['Status']:
+        print(request.args['Status'])
+        dest = "%" + request.args['Status'] + '%'
+        destinations = Destination.query.filter(Destination.status.like(dest)).all()
+        return render_template('index.html', destinations=destinations)
+    else:
+        return redirect(url_for('main.index'))
+    
+    
 @mainbp.route('/search')
 def search():
     if request.args['search']:
