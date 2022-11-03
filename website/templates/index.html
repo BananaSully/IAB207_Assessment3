@@ -173,15 +173,14 @@
       </div>
     </a>  
       <div class="row">
-        <div class="col-sm-3">
-          <div class="card-body">
-          </div>
-        </div>
+
         <div class="col">
           <div class="card-body">
             <h3 class="card-title panel">{{destination.name}}</h3>
-            <h6 class="card-text">{{destination.overview}}</h6>
-            <h6 class="card-text">{{destination.venue}}</h6>
+            <h5 class="card-text">{{destination.venue}}</h5>
+            <h6 class="card-text">Date</h6>
+            <h7 class="card-text">{{destination.overview}}</h7>
+            
           </div>
         </div>
       </div>
@@ -195,7 +194,7 @@
           </div>
         
           <div class="col-md-5">
-            <h5 class="card-body test1">Artist Name</h5>
+            <h5 class="card-body test1">{{destination.user.name}}</h5>
           </div>
         </div>
       </ul>
