@@ -154,6 +154,16 @@
               <h2 class="card-title text-center">Buy Tickets</h2>
           
               <ul class="list-group list-group-flush">
+
+                {{wtf.render_form(form,"/destinations/{0}/ticket".format(destination.id))}} 
+                  {% for trick in destination.ticket %}
+                  <div class="col-md-12">  
+                    <b>{{ticket.id}} <span class="ml-2 text-muted"></span></b>
+                    <p>{{ticket.text}}</p>  
+                  </div> 
+                  {% endfor %} 
+
+
                 <li class="list-group-item "><h6>Regular</h6>{{destination.ticketPrice}}<select class="form-select mb-4 form-select-sm w-50 mx-auto" id="inputGroupSelect03" aria-label="Example select with button addon">
                   <option selected>0</option>
                   <option value="1">1</option>
