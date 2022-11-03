@@ -7,7 +7,7 @@ from werkzeug.utils import secure_filename
 #additional import:
 from flask_login import login_required, current_user
 
-bp = Blueprint('destination', __name__, url_prefix='/destinations')
+bp = Blueprint('event', __name__, url_prefix='/destinations')
 
 @bp.route('/<id>')
 def show(id):
@@ -42,7 +42,7 @@ def create():
     db.session.commit()
     print('Successfully created a new Event', 'success')
     #Always end with redirect when form is valid
-    return redirect(url_for('destination.create'))
+    return redirect(url_for('event.create'))
   return render_template('destinations/create.html', form=form)
 
 def check_upload_file(form):
