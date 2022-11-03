@@ -90,18 +90,7 @@
 
 {% import "bootstrap/form.html" as wtf %}
 
-  <div class="container">
-    <div class="row mt-5">
-      <div class="col-md-12">
-
-        <h1>Add Travel Destination</h1>
-        <p>Enter a country that you will help clients travel to.</p>
-
-        {{wtf.render_form(form)}}
-        
-      </div>
-    </div>
-  </div>
+ 
 
 
 
@@ -124,227 +113,13 @@
               <div class="card-body ">
                 <h4 class="text-center">General Info</h4> 
                 <div class="form-floating mb-2 w-75 mx-auto">
-                  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                  <label for="floatingInput">Event Name</label>
-                </div>
-                <div class="form-floating mb-2 w-75 mx-auto">
-                  <input type="email" class="form-control " id="floatingInput" placeholder="name@example.com">
-                  <label for="floatingInput">Venue Location</label>
+                  {{wtf.render_form(form)}}
                 </div>
 
-
-                <div class="row g-0 mb-2 w-75 mx-auto">
-                  <div class="col">
-                    <div class="form-floating mx-0">
-                      <select class="form-select form-control" id="floatingSelect" aria-label="Floating label select example">
-                        <option selected> </option>
-                        <option value="1">Indoor</option>
-                        <option value="2">Outdoor</option>
-                        <option value="3">Public Stage</option>
-                        <option value="4">...</option>
-                      </select>
-                      <label for="floatingSelect">Venue Type</label>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="form-floating mx-2">
-                      <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                        <option selected> </option>
-                        <option value="1">Concert</option>
-                        <option value="2">Festival</option>
-                        <option value="3">Tour</option>
-                        <option value="4">...</option>
-                      </select>
-                      <label for="floatingSelect">Event Type</label>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="form-floating mx-0">
-                      <select class="form-select form-control" id="floatingSelect" aria-label="Floating label select example">
-                        <option selected> </option>
-                        <option value="1">Rock</option>
-                        <option value="2">Jazz</option>
-                        <option value="3">Pop</option>
-                        <option value="4">...</option>
-                      </select>
-                      <label for="floatingSelect">Music Genre</label>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="row g-0 mb-2 w-75 mx-auto">
-                  <div class="col">
-                    <div class="form-floating mx-0">
-                      <input type="date" class="form-control " id="floatingInput" placeholder="name@example.com">
-                      <label for="floatingInput">Start Date</label>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="form-floating ms-2">
-                      <input type="time" class="form-control " id="floatingInput" placeholder="name@example.com">
-                      <label for="floatingInput">Start Time</label>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="row g-0 mb-2 w-75 mx-auto">
-                  <div class="col">
-                    <div class="form-floating mx-0">
-                      <input type="date" class="form-control " id="floatingInput" placeholder="name@example.com">
-                      <label for="floatingInput">End Date</label>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="form-floating ms-2">
-                      <input type="time" class="form-control " id="floatingInput" placeholder="name@example.com">
-                      <label for="floatingInput">End Time</label>
-                    </div>
-                  </div>
-                </div>
 
 
               </div>
             </div>
-
-
-
-
-
-            <div class="card shadow mb-5">
-              <div class="card-body ">
-                <h4 class="text-center">Ticket Info</h4> 
-               
-
-
-                
-
-                <div class="input-group g-0 mb-2 w-75 mx-auto ">
-                  <div class="input-group-checkbox">
-                    <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
-                  </div>
-
-                  <div class="form-floating">
-                    <input type="text" class="form-control " id="floatingInputGroup1" placeholder="Regular" value="Regular">
-                    <label for="floatingInputGroup1">Ticket Type</label>
-                  </div>
-                  <div class="form-floating">
-                    <input type="number" class="form-control" id="floatingInputGroup1" placeholder="Username">
-                    <label for="floatingInputGroup1">Ticket Price</label>
-                  </div>
-                  
-                  <div class="form-floating">
-                      <input type="number" class="form-control" id="floatingInputGroup1" placeholder="Username">
-                      <label for="floatingInputGroup1">Total Tickets</label>
-                    </div>
-
-                </div>
-
-                <div class="input-group g-0 mb-2 w-75 mx-auto ">
-                  <div class="input-group-checkbox">
-                    <input class="form-check-input mt-0" type="checkbox" value="" aria-label="text">
-                  </div>
-
-                  <div class="form-floating">
-                    <input type="text" class="form-control " id="floatingInputGroup1" placeholder="Premium" value="Premium">
-                    <label for="floatingInputGroup1">Ticket Type</label>
-                  </div>
-                  <div class="form-floating">
-                    <input type="number" class="form-control" id="floatingInputGroup1" placeholder="Username">
-                    <label for="floatingInputGroup1">Ticket Price</label>
-                  </div>
-                  
-                  <div class="form-floating">
-                      <input type="number" class="form-control" id="floatingInputGroup1" placeholder="Username">
-                      <label for="floatingInputGroup1">Total Tickets</label>
-                    </div>
-
-                </div>
-
-                <div class="input-group g-0 mb-2 w-75 mx-auto ">
-                  <div class="input-group-checkbox">
-                    <input class="form-check-input mt-0" type="checkbox" value="" aria-label="text">
-                  </div>
-
-                  <div class="form-floating">
-                    <input type="text" class="form-control " id="floatingInputGroup1" placeholder="VIP" value="VIP">
-                    <label for="floatingInputGroup1">Ticket Type</label>
-                  </div>
-                  <div class="form-floating">
-                    <input type="number" class="form-control" id="floatingInputGroup1" placeholder="Username">
-                    <label for="floatingInputGroup1">Ticket Price</label>
-                  </div>
-                  
-                  <div class="form-floating">
-                      <input type="number" class="form-control" id="floatingInputGroup1" placeholder="Username">
-                      <label for="floatingInputGroup1">Total Tickets</label>
-                    </div>
-
-                </div>
-
-                
-
-                <div class="input-group g-0 mb-2 w-75 mx-auto ">
-                  <div class="input-group-checkbox">
-                    <input class="form-check-input mt-0" type="checkbox" value="" aria-label="text">
-                  </div>
-
-                  <div class="form-floating">
-                    <input type="text" class="form-control " id="floatingInputGroup1" placeholder="Extra">
-                    <label for="floatingInputGroup1">Ticket Type</label>
-                  </div>
-                  <div class="form-floating">
-                    <input type="number" class="form-control" id="floatingInputGroup1" placeholder="Price">
-                    <label for="floatingInputGroup1">Ticket Price</label>
-                  </div>
-                  
-                  <div class="form-floating">
-                      <input type="number" class="form-control" id="floatingInputGroup1" placeholder="Price">
-                      <label for="floatingInputGroup1">Total Tickets</label>
-                    </div>
-
-                </div>
-
-                
-                
-
-
-              </div>
-            </div>
-
-
-            
-
-
-            
-
-
-            <div class="card shadow mb-5">
-              <div class="card-body ">
-                <h4 class="text-center">Event Page Info</h4> 
-                <h6 class="g-0 mb-2 w-75 mx-auto">Upload Cover Image</h6> 
-                <div class="input-group g-0 mb-2 w-75 mx-auto">
-                  <input type="file" class="form-control" id="inputGroupFile01">
-                </div>
-
-               
-
-                <div class="form-floating mb-2 w-75 mx-auto">
-                  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                  <label for="floatingTextarea2">Description</label>
-                </div>
-                <div class="form-floating mb-2 w-75 mx-auto">
-                  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                  <label for="floatingTextarea2">Overview</label>
-                </div>
-              </div>
-            </div>
-
-
-            
-
-            <button type="button" class="btn btn-primary btn-lg w-75 mx-auto">Submit</button>
 
 
 
@@ -353,6 +128,8 @@
       </div>
     </div>
 </div>    
+
+
 
 
 

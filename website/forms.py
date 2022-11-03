@@ -7,7 +7,7 @@ ALLOWED_FILE = {'PNG','JPG','png','jpg'}
 
 #Create new destination
 class DestinationForm(FlaskForm):
-  name = StringField('Country', validators=[InputRequired()])
+  name = StringField('Event Name', validators=[InputRequired()])
   venue = StringField('Venue', validators=[InputRequired()])
   genre = StringField('Music Genre', validators=[InputRequired()])
   ticketPrice = StringField('Ticket Price', validators=[InputRequired()])
@@ -16,7 +16,7 @@ class DestinationForm(FlaskForm):
   description = TextAreaField('Description', 
   validators=[InputRequired()])
   status = StringField('Status', validators=[InputRequired()])
-  image = FileField('Destination Image', validators=[
+  image = FileField('Upload Cover Image', validators=[
   FileRequired(message='Image cannot be empty'),
   FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])
   
