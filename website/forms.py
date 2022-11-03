@@ -5,30 +5,21 @@ from flask_wtf.file import FileRequired, FileField, FileAllowed
 
 ALLOWED_FILE = {'PNG','JPG','png','jpg'}
 
-#Create new event
-class EventForm(FlaskForm):
-  EventName = StringField('Event Name', validators=[InputRequired()])
-  venueLocation = StringField('Venue Location', validators=[InputRequired()])
-  musicGenre = StringField('Music Genre', validators=[InputRequired()])
-  #startDate = StringField('Start Date', validators=[InputRequired()])
-  #endDate = StringField('End Date', validators=[InputRequired()])
-  #startTime = StringField('Start Time', validators=[InputRequired()])
-  #endTime = StringField('End Time', validators=[InputRequired()])
+#Create new destination
+class DestinationForm(FlaskForm):
+  name = StringField('Country', validators=[InputRequired()])
+  venue = StringField('Venue', validators=[InputRequired()])
+  genre = StringField('Music Genre', validators=[InputRequired()])
   ticketPrice = StringField('Ticket Price', validators=[InputRequired()])
-  totalTickets = StringField('Total Tickets', validators=[InputRequired()])
-  
-
-  image = FileField('Upload Cover Image', validators=[
+  overview = TextAreaField('Overview', 
+  validators=[InputRequired()])
+  description = TextAreaField('Description', 
+  validators=[InputRequired()])
+  image = FileField('Destination Image', validators=[
   FileRequired(message='Image cannot be empty'),
   FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])
-  description = TextAreaField('Description', validators=[InputRequired()])
-  overview = TextAreaField('Overview', validators=[InputRequired()])
   
-
-  submit = SubmitField("Submit")
-
-
-
+  submit = SubmitField("Create")
     
 #User login
 class LoginForm(FlaskForm):
@@ -52,8 +43,3 @@ class RegisterForm(FlaskForm):
 class CommentForm(FlaskForm):
   text = TextAreaField('Comment', [InputRequired()])
   submit = SubmitField('Create')
-
-
-class PurchaseTickets(FlaskForm):
-  numofTickets = StringField('Number of tickets', [InputRequired()])
-  submit = SubmitField('Purchase Tickets')

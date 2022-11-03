@@ -57,12 +57,11 @@
   
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li><a href="/" class="nav-link px-5 link-secondary">Home</a></li>
-            <li><a href="{{ url_for('Event.create') }}" class="nav-link px-2 link-secondary">Create An Event</a></li>
+            <li><a href="{{ url_for('destination.create') }}" class="nav-link px-2 link-secondary">Create An Event</a></li>
           </ul>
   
-          <form class="form-inline d-flex flex-nowrap" action="{{url_for('main.search')}}" >
-            <input type="text" name="search" class="form-control flex-grow-1 my-1 mr-sm-2" id="SearchForm">
-            <button type="submit" class="flex-shrink-1 btn btn-primary my-1">Submit</button>
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
           </form>
   
           <div class="dropdown text-end">
@@ -139,32 +138,17 @@
 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center py-2">
 </div>
 <div class="input-group mb-3 ">
-    <div class="form-floating">
-      <input type="text" class="form-control " id="floatingInputGroup1" placeholder="Username">
-      <label for="floatingInputGroup1">Location</label>
-    </div>
-    <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
-      <label for="floatingInputGroup1">Price</label>
-    </div>
-    
-    <div class="form-floating">
-        <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
-        <label for="floatingInputGroup1">Event Type</label>
-      </div>
-      
-      
-      <!---dewdw-->
-      
-
-    <button type="button" class="btn btn-primary">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
-      </svg> Search</button>
-
+        <form class="form-floating form-inline d-flex flex-nowrap" action="{{url_for('main.search')}}" >
+          <input type="text" name="search" class="form-control flex-grow-1 my-1 mr-sm-2" id="SearchForm" placeholder="Search Something">
+          <label for="floatingInputGroup1">Search</label>
+          <button type="submit" class="flex-shrink-1 btn btn-primary">Submit</button>
+          
+        </form>
   </div>
 
-  
+
+
+
 
 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-3">
     <div class="dropdown">
@@ -198,51 +182,51 @@
 
 <h2>Upcoming Events</h2>
 
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    {% for Event in Events %}
-    <div class="col">
-      
-      <div class="card btn1">
-        <a href={{url_for('Event.show', id=Event.id)}}>
-        <img src={{Event.image}} class="card-img-top" alt="...">
-        <div class="card-img-overlay me-2">
-          <button type="button" class="btn btn-light me-1" disabled><b>Price</b></button>
-          <button type="button" class="btn btn-light" disabled><b>Status</b></button>
-        </div>
-      </a>  
-        <div class="row">
-          <div class="col-sm-3">
-            <div class="card-body">
-            <h4 class="card-title mid">SEP<br>1</h4>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card-body">
-              <h5 class="card-title panel">{{Events.name}}</h5>
-              <h6 class="card-text">{{Events.description}}</h6>
-              <h6 class="card-text">Location</h6>
-            </div>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for destination in destinations %}
+  <div class="col">
+    
+    <div class="card btn1">
+      <a href={{url_for('destination.show', id=destination.id)}}>
+      <img src={{destination.image}} class="card-img-top" alt="...">
+      <div class="card-img-overlay me-2">
+        <button type="button" class="btn btn-light me-1" disabled><b>Price</b></button>
+        <button type="button" class="btn btn-light" disabled><b>Status</b></button>
+      </div>
+    </a>  
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="card-body">
+          <h4 class="card-title mid">SEP<br>1</h4>
           </div>
         </div>
-        
-        <ul class="list-group list-group-flush">
-          <div class="row">
-            <div class="col-md-2">
-              <div class="card-body">
-                <img src="static/image/icon.png" alt="mdo" width="50" height="50" class="rounded-circle align-items-center">
-              </div>
-            </div>
-          
-            <div class="col-md-5">
-              <h5 class="card-body test1">Artist Name</h5>
-            </div>
+        <div class="col">
+          <div class="card-body">
+            <h5 class="card-title panel">{{destination.name}}</h5>
+            <h6 class="card-text">{{destination.description}}</h6>
+            <h6 class="card-text">Location</h6>
           </div>
-        </ul>
+        </div>
       </div>
       
+      <ul class="list-group list-group-flush">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="card-body">
+              <img src="static/image/icon.png" alt="mdo" width="50" height="50" class="rounded-circle align-items-center">
+            </div>
+          </div>
+        
+          <div class="col-md-5">
+            <h5 class="card-body test1">Artist Name</h5>
+          </div>
+        </div>
+      </ul>
     </div>
-    {% endfor %}
+    
   </div>
+  {% endfor %}
+</div>
 
 
 </div>  

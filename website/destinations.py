@@ -1,38 +1,39 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from .models import Events, Comment, purchasedTickets
-from .forms import EventForm, CommentForm, PurchaseTickets
+from .models import Destination, Comment
+from .forms import DestinationForm, CommentForm
 from . import db, app
 import os
 from werkzeug.utils import secure_filename
 #additional import:
 from flask_login import login_required, current_user
 
-bp = Blueprint('Event', __name__, url_prefix='/Events')
+bp = Blueprint('destination', __name__, url_prefix='/destinations')
 
 @bp.route('/<id>')
 def show(id):
-    Event = Events.query.filter_by(id=id).first()
+    destination = Destination.query.filter_by(id=id).first()
     # create the comment form
     cform = CommentForm()    
-    return render_template('Events/show.html', Event=Event, form=cform)
+    return render_template('destinations/show.html', destination=destination, form=cform)
 
 @bp.route('/create', methods = ['GET', 'POST'])
 @login_required
 def create():
   print('Method type: ', request.method)
-  form = EventForm()
+  form = DestinationForm()
   if form.validate_on_submit():
     #call the function that checks and returns image
     db_file_path=check_upload_file(form)
-    Event=Events(name=form.name.data,venue=form.venue.data,genre=form.genre.data,ticketPrice=form.ticketPrice.data,description=form.description.data,overview=form.overview.data,image=db_file_path)
+    destination=Destination(name=form.name.data,venue=form.venue.data,genre=form.genre.data,ticketPrice=form.ticketPrice.data,description=form.description.data,overview=form.overview.data, 
+    image=db_file_path)
     # add the object to the db session
-    db.session.add(Event)
+    db.session.add(destination)
     # commit to the database
     db.session.commit()
-    print('Successfully created a new Event', 'success')
+    print('Successfully created new travel destination', 'success')
     #Always end with redirect when form is valid
-    return redirect(url_for('Event.create'))
-  return render_template('Events/create.html', form=form)
+    return redirect(url_for('destination.create'))
+  return render_template('destinations/create.html', form=form)
 
 def check_upload_file(form):
   #get file data from form  
@@ -48,36 +49,18 @@ def check_upload_file(form):
   fp.save(upload_path)
   return db_upload_path
 
+@bp.route('/<destination>/comment', methods = ['GET', 'POST'])  
 @login_required
-def Purchase_Tickets(Event):
-  print('Method type: ', request.method)
-  form = PurchaseTickets()
-  if form.validate_on_submit():
-    tickets=purchasedTickets(numtickets=form.numofTickets.data,
-                             user=current_user)
-     # add the object to the db session
-    db.session.add(Event)
-    # commit to the database
-    db.session.commit()
-  
-    print('Your tickets have be purchased','success')
-
-    return redirect(url_for('Eventpage', id=Event))
-
-
-
-@bp.route('/<Event>/comment', methods = ['GET', 'POST'])  
-@login_required
-def comment(Event):  
+def comment(destination):  
     form = CommentForm()  
-    #get the Event object associated to the page and the comment
-    Event_obj = Events.query.filter_by(id=Event).first()  
+    #get the destination object associated to the page and the comment
+    destination_obj = Destination.query.filter_by(id=destination).first()  
     if form.validate_on_submit():  
       #read the comment from the form
       comment = Comment(text=form.text.data,  
-                        Event=Event_obj,
+                        destination=destination_obj,
                         user=current_user) 
-      #here the back-referencing works - comment.Event is set
+      #here the back-referencing works - comment.destination is set
       # and the link is created
       db.session.add(comment) 
       db.session.commit() 
@@ -85,6 +68,6 @@ def comment(Event):
       #flashing a message which needs to be handled by the html
       #flash('Your comment has been added', 'success')  
       print('Your comment has been added', 'success') 
-    # using redirect sends a GET request to event.show
-    return redirect(url_for('Event.show', id=Event))
+    # using redirect sends a GET request to destination.show
+    return redirect(url_for('destination.show', id=destination))
     
