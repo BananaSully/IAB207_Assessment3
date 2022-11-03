@@ -28,18 +28,11 @@ class DestinationForm(FlaskForm):
   submit = SubmitField("Create")
 
 
-class Tickets(FlaskForm):
-  number = StringField('Venue', validators=[InputRequired()])
-  total = StringField('Music Genre', validators=[InputRequired()])
-  ticketPrice = StringField('Ticket Price', validators=[InputRequired()])
-  overview = TextAreaField('Overview', 
-  validators=[InputRequired()])
-  description = TextAreaField('Description', 
-  validators=[InputRequired()])
-  status = StringField('Status', validators=[InputRequired()])
-  image = FileField('Upload Cover Image', validators=[
-  FileRequired(message='Image cannot be empty'),
-  FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])
+class TicketForm(FlaskForm):
+  id = StringField('Ticket ID', validators=[InputRequired()])
+  total = StringField('Total Ticket Price', validators=[InputRequired()])
+  
+  
 
 submit = SubmitField("Create")
     

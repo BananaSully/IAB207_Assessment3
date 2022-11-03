@@ -44,7 +44,7 @@ def login():
     login_form = LoginForm()
     error=None
     if(login_form.validate_on_submit()==True):
-        #get the username and password from the database
+        #get the username and password from the database. 
         user_name = login_form.user_name.data
         password = login_form.password.data
         u1 = User.query.filter_by(name=user_name).first()
