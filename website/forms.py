@@ -6,15 +6,26 @@ from flask_wtf.file import FileRequired, FileField, FileAllowed
 ALLOWED_FILE = {'PNG','JPG','png','jpg'}
 
 #Create new destination
-class DestinationForm(FlaskForm):
-  name = StringField('Country', validators=[InputRequired()])
-  description = TextAreaField('Description', 
-  validators=[InputRequired()])
-  image = FileField('Destination Image', validators=[
+class EventForm(FlaskForm):
+  eventName = StringField('Event Name', validators=[InputRequired()])
+  venueLocation = StringField('Venue Location', validators=[InputRequired()])
+  musicGenre = StringField('Msuic Genre', validators=[InputRequired()])
+  startDate = StringField('Start Date', validators=[InputRequired()])
+  endDate = StringField('End Date', validators=[InputRequired()])
+  startTime = StringField('Start Time', validators=[InputRequired()])
+  endTime = StringField('End Time', validators=[InputRequired()])
+  ticketPrice = StringField('Ticket Price', validators=[InputRequired()])
+  totalTickets = StringField('Total Tickets', validators=[InputRequired()])
+  
+
+  image = FileField('Upload Cover Image', validators=[
   FileRequired(message='Image cannot be empty'),
   FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])
-  currency = StringField('Currency', validators=[InputRequired()])
-  submit = SubmitField("Create")
+  description = TextAreaField('Description', validators=[InputRequired()])
+  overview = TextAreaField('Overview', validators=[InputRequired()])
+  
+
+  submit = SubmitField("Submit")
     
 #User login
 class LoginForm(FlaskForm):

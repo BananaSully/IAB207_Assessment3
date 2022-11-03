@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from .models import Destination, Comment
-from .forms import DestinationForm, CommentForm
+from .models import Events, Comment
+from .forms import EventForm, CommentForm
 from . import db, app
 import os
 from werkzeug.utils import secure_filename
@@ -11,7 +11,7 @@ bp = Blueprint('destination', __name__, url_prefix='/destinations')
 
 @bp.route('/<id>')
 def show(id):
-    destination = Destination.query.filter_by(id=id).first()
+    destination = Events.query.filter_by(id=id).first()
     # create the comment form
     cform = CommentForm()    
     return render_template('destinations/show.html', destination=destination, form=cform)
@@ -20,11 +20,11 @@ def show(id):
 @login_required
 def create():
   print('Method type: ', request.method)
-  form = DestinationForm()
+  form = EventForm()
   if form.validate_on_submit():
     #call the function that checks and returns image
     db_file_path=check_upload_file(form)
-    destination=Destination(name=form.name.data,description=form.description.data, 
+    destination=Events(name=form.name.data,description=form.description.data, 
     image=db_file_path,currency=form.currency.data)
     # add the object to the db session
     db.session.add(destination)
@@ -54,7 +54,7 @@ def check_upload_file(form):
 def comment(destination):  
     form = CommentForm()  
     #get the destination object associated to the page and the comment
-    destination_obj = Destination.query.filter_by(id=destination).first()  
+    destination_obj = Events.query.filter_by(id=destination).first()  
     if form.validate_on_submit():  
       #read the comment from the form
       comment = Comment(text=form.text.data,  
