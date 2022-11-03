@@ -18,13 +18,15 @@ def create():
     #call the function that checks and returns image
     ticket=Ticket(id=form.id.data,total=form.total.data,user=current_user)
 
-
+    id = request.form['id']
+    total = request.form['total']
+    user = request.form['current']
     # add the object to the db session
     db.session.add(ticket)
     # commit to the database
     db.session.commit()
     print('Successfully created new ticket', 'success')
     #Always end with redirect when form is valid
-    return redirect(url_for('ticket.show'))
-  return render_template('ticket/show.html', form=form)
+    return redirect(url_for('ticket.create'))
+  return render_template('ticket/create.html', form=form)
 
