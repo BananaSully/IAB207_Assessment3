@@ -11,10 +11,10 @@ bp = Blueprint('Event', __name__, url_prefix='/Events')
 
 @bp.route('/<id>')
 def show(id):
-    Event = Events.query.filter_by(id=id).first()
+    event = Events.query.filter_by(id=id).first()
     # create the comment form
     cform = CommentForm()    
-    return render_template('Events/show.html', Event=Event, form=cform)
+    return render_template('Events/show.html', event=event, form=cform)
 
 @bp.route('/create', methods = ['GET', 'POST'])
 @login_required
@@ -24,7 +24,7 @@ def create():
   if form.validate_on_submit():
     #call the function that checks and returns image
     db_file_path=check_upload_file(form)
-    Event=Events(name=form.EventName.data,
+    event=Events(name=form.eventName.data,
                 description=form.description.data, 
                 venue_location=form.venueLocation.data,
                 genre=form.musicGenre.data,
@@ -37,7 +37,7 @@ def create():
                 overview=form.overview.data,
                 image=db_file_path)
     # add the object to the db session
-    db.session.add(Event)
+    db.session.add(event)
     # commit to the database
     db.session.commit()
     print('Successfully created a new Event', 'success')
@@ -60,29 +60,29 @@ def check_upload_file(form):
   return db_upload_path
 
 @login_required
-def Purchase_Tickets(Event):
+def Purchase_Tickets(event):
   print('Method type: ', request.method)
   form = PurchaseTickets()
   if form.validate_on_submit():
     tickets=purchasedTickets(numtickets=form.numofTickets.data,
                              user=current_user)
      # add the object to the db session
-    db.session.add(Event)
+    db.session.add(event)
     # commit to the database
     db.session.commit()
   
     print('Your tickets have be purchased','success')
 
-    return redirect(url_for('Eventpage', id=Event))
+    return redirect(url_for('eventpage', id=event))
 
 
 
 @bp.route('/<Event>/comment', methods = ['GET', 'POST'])  
 @login_required
-def comment(Event):  
+def comment(event):  
     form = CommentForm()  
     #get the Event object associated to the page and the comment
-    Event_obj = Events.query.filter_by(id=Event).first()  
+    Event_obj = Events.query.filter_by(id=event).first()  
     if form.validate_on_submit():  
       #read the comment from the form
       comment = Comment(text=form.text.data,  
@@ -97,5 +97,5 @@ def comment(Event):
       #flash('Your comment has been added', 'success')  
       print('Your comment has been added', 'success') 
     # using redirect sends a GET request to event.show
-    return redirect(url_for('Event.show', id=Event))
+    return redirect(url_for('Event.show', id=event))
     

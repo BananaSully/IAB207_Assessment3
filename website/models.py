@@ -20,12 +20,12 @@ class User(db.Model, UserMixin):
 class purchasedTickets(db.Model):  
     __tablename__ = "purchasedTickets"
     user_id = db.Column(db.Integer, primary_key=True)
-    Event_id = db.Column(db.Integer)
+    event_id = db.Column(db.Integer)
     numPurchasedTickets = db.Column(db.Integer)
 
 
 class Events(db.Model):
-    __tablename__ = 'Events'
+    __tablename__ = 'events'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     description = db.Column(db.String(200))
@@ -41,7 +41,7 @@ class Events(db.Model):
     image = db.Column(db.String(400))
     # ... Create the Comments db.relationship
 	# relation to call Event.comments and comment.Event
-    comments = db.relationship('Comment', backref='Events')
+    comments = db.relationship('Comment', backref='events')
     
     def __repr__(self): #string print method
         return "<Name: {}>".format(self.name)
@@ -53,7 +53,7 @@ class Comment(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now())
     #add the foreign keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    Event_id = db.Column(db.Integer, db.ForeignKey('Events.id'))
+    event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
 
 
     def __repr__(self):

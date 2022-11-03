@@ -7,7 +7,7 @@ ALLOWED_FILE = {'PNG','JPG','png','jpg'}
 
 #Create new event
 class EventForm(FlaskForm):
-  EventName = StringField('Event Name', validators=[InputRequired()])
+  eventName = StringField('Event Name', validators=[InputRequired()])
   venueLocation = StringField('Venue Location', validators=[InputRequired()])
   musicGenre = StringField('Music Genre', validators=[InputRequired()])
   #startDate = StringField('Start Date', validators=[InputRequired()])
