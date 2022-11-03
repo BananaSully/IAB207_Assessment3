@@ -13,7 +13,7 @@ def search():
     if request.args['search']:
         print(request.args['search'])
         dest = "%" + request.args['search'] + '%'
-        destinations = Destination.query.filter(Destination.description.like(dest)).all()
+        destinations = Destination.query.filter(Destination.name.like(dest)).all()
         return render_template('index.html', destinations=destinations)
     else:
         return redirect(url_for('main.index'))
