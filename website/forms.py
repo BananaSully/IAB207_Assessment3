@@ -15,6 +15,7 @@ class DestinationForm(FlaskForm):
   validators=[InputRequired()])
   description = TextAreaField('Description', 
   validators=[InputRequired()])
+  status = StringField('Status', validators=[InputRequired()])
   image = FileField('Destination Image', validators=[
   FileRequired(message='Image cannot be empty'),
   FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])
