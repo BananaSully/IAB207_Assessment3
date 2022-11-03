@@ -5,23 +5,11 @@ from flask_wtf.file import FileRequired, FileField, FileAllowed
 
 ALLOWED_FILE = {'PNG','JPG','png','jpg'}
 
-<<<<<<< HEAD
-#Create new event
-class EventForm(FlaskForm):
-  eventName = StringField('Event Name', validators=[InputRequired()])
-  venueLocation = StringField('Venue Location', validators=[InputRequired()])
-  musicGenre = StringField('Music Genre', validators=[InputRequired()])
-  #startDate = StringField('Start Date', validators=[InputRequired()])
-  #endDate = StringField('End Date', validators=[InputRequired()])
-  #startTime = StringField('Start Time', validators=[InputRequired()])
-  #endTime = StringField('End Time', validators=[InputRequired()])
-=======
 #Create new destination
 class DestinationForm(FlaskForm):
   name = StringField('Country', validators=[InputRequired()])
   venue = StringField('Venue', validators=[InputRequired()])
   genre = StringField('Music Genre', validators=[InputRequired()])
->>>>>>> 50003a1f6372178de38b3e3ff522702aeba37713
   ticketPrice = StringField('Ticket Price', validators=[InputRequired()])
   overview = TextAreaField('Overview', 
   validators=[InputRequired()])

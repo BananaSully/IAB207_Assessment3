@@ -15,21 +15,9 @@ class User(db.Model, UserMixin):
     comments = db.relationship('Comment', backref='user')
 
 
-<<<<<<< HEAD
-class purchasedTickets(db.Model):  
-    __tablename__ = "purchasedTickets"
-    user_id = db.Column(db.Integer, primary_key=True)
-    event_id = db.Column(db.Integer)
-    numPurchasedTickets = db.Column(db.Integer)
-
-
-class Events(db.Model):
-    __tablename__ = 'events'
-=======
 
 class Destination(db.Model):
     __tablename__ = 'destinations'
->>>>>>> 50003a1f6372178de38b3e3ff522702aeba37713
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     venue = db.Column(db.String(80))
@@ -38,12 +26,6 @@ class Destination(db.Model):
     overview = db.Column(db.String(50))
     description = db.Column(db.String(200))
     image = db.Column(db.String(400))
-<<<<<<< HEAD
-    # ... Create the Comments db.relationship
-	# relation to call Event.comments and comment.Event
-    comments = db.relationship('Comment', backref='events')
-=======
->>>>>>> 50003a1f6372178de38b3e3ff522702aeba37713
     
     # ... Create the Comments db.relationship
 	# relation to call destination.comments and comment.destination
@@ -61,11 +43,7 @@ class Comment(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now())
     #add the foreign keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-<<<<<<< HEAD
-    event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
-=======
     destination_id = db.Column(db.Integer, db.ForeignKey('destinations.id'))
->>>>>>> 50003a1f6372178de38b3e3ff522702aeba37713
 
 
     def __repr__(self):
