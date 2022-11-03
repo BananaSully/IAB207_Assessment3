@@ -5,6 +5,7 @@ from flask_wtf.file import FileRequired, FileField, FileAllowed
 
 ALLOWED_FILE = {'PNG','JPG','png','jpg'}
 
+<<<<<<< HEAD
 #Create new event
 class EventForm(FlaskForm):
   eventName = StringField('Event Name', validators=[InputRequired()])
@@ -14,21 +15,23 @@ class EventForm(FlaskForm):
   #endDate = StringField('End Date', validators=[InputRequired()])
   #startTime = StringField('Start Time', validators=[InputRequired()])
   #endTime = StringField('End Time', validators=[InputRequired()])
+=======
+#Create new destination
+class DestinationForm(FlaskForm):
+  name = StringField('Country', validators=[InputRequired()])
+  venue = StringField('Venue', validators=[InputRequired()])
+  genre = StringField('Music Genre', validators=[InputRequired()])
+>>>>>>> 50003a1f6372178de38b3e3ff522702aeba37713
   ticketPrice = StringField('Ticket Price', validators=[InputRequired()])
-  totalTickets = StringField('Total Tickets', validators=[InputRequired()])
-  
-
-  image = FileField('Upload Cover Image', validators=[
+  overview = TextAreaField('Overview', 
+  validators=[InputRequired()])
+  description = TextAreaField('Description', 
+  validators=[InputRequired()])
+  image = FileField('Destination Image', validators=[
   FileRequired(message='Image cannot be empty'),
   FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])
-  description = TextAreaField('Description', validators=[InputRequired()])
-  overview = TextAreaField('Overview', validators=[InputRequired()])
   
-
-  submit = SubmitField("Submit")
-
-
-
+  submit = SubmitField("Create")
     
 #User login
 class LoginForm(FlaskForm):
@@ -52,8 +55,3 @@ class RegisterForm(FlaskForm):
 class CommentForm(FlaskForm):
   text = TextAreaField('Comment', [InputRequired()])
   submit = SubmitField('Create')
-
-
-class PurchaseTickets(FlaskForm):
-  numofTickets = StringField('Number of tickets', [InputRequired()])
-  submit = SubmitField('Purchase Tickets')

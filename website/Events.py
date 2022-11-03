@@ -24,6 +24,7 @@ def create():
   if form.validate_on_submit():
     #call the function that checks and returns image
     db_file_path=check_upload_file(form)
+<<<<<<< HEAD
     event=Events(name=form.eventName.data,
                 description=form.description.data, 
                 venue_location=form.venueLocation.data,
@@ -36,6 +37,9 @@ def create():
                 ticket_quantity=form.totalTickets.data,
                 overview=form.overview.data,
                 image=db_file_path)
+=======
+    Event=Events(name=form.name.data,venue=form.venue.data,genre=form.genre.data,ticketPrice=form.ticketPrice.data,description=form.description.data,overview=form.overview.data,image=db_file_path)
+>>>>>>> 50003a1f6372178de38b3e3ff522702aeba37713
     # add the object to the db session
     db.session.add(event)
     # commit to the database
