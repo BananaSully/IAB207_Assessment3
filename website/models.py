@@ -25,6 +25,7 @@ class Destination(db.Model):
     ticketPrice = db.Column(db.String(5))
     overview = db.Column(db.String(50))
     description = db.Column(db.String(200))
+    status = db.Column(db.String(100))
     image = db.Column(db.String(400))
     
     # ... Create the Comments db.relationship
