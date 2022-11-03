@@ -48,6 +48,9 @@
 <link href={{ url_for('static', filename='static/css/bootstrap.bundle.min.js') }} rel="stylesheet">
 
 
+
+
+
 <div class="bg-light"> 
   
   <div>
@@ -93,62 +96,103 @@
   {% import "bootstrap/form.html" as wtf %}
 
 
-<div class="container">  
-    <div class="row mt-5 mb-3">  
-      <div class="col-md-12">  
-        <div class="float-left">  
-          <h1 class="mb-0">{{destination.name}}</h1>  
-          <p>Popular Destination</p>  
-        </div>  
- 
-        <div class="float-right text-right">  
-          <p class="mb-0">1 AUD equals</p>  
-          <h2 id="exchange-rate">0.62 EUR</h1>  
-        </div>  
-      </div>  
-    </div>  
- 
-    <!-- Destination --> 
-    <div class="row">  
-      <div class="col-md-12">  
-        <div class="card my-3">  
-          <div class="card-body">  
-            <div class="media">  
-              <img class="align-self-start mr-3" src="{{destination.image}}">  
-              <div class="media-body">  
-                <small class="font-weight-bold text-muted">Stay 2 nights</small>  
-                <h5 class="mt-0">{{destination.name}}</h5>  
-                <p>{{destination.description}}</p>  
-                <a href="#" class="btn btn-danger">Book Now</a>  
-              </div>  
-            </div>  
-          </div>  
-        </div>  
-      </div>  
-    </div>     
- 
-   
- 
-    <hr>  
- 
-    <!-- Comments -->  
-    <div class="row">  
-      <div class="col-md-12">  
-        <h2>Comments</h1>  
-      </div>  
-    </div>  
- 
-    <div class="row border-bottom"> 
-      {{wtf.render_form(form,"/destinations/{0}/comment".format(destination.id))}} 
-      {% for comment in destination.comments %}
-      <div class="col-md-12">  
-        <b>{{comment.user.name}} <span class="ml-2 text-muted">January 2017</span></b>
-        <p>{{comment.text}}</p>  
-      </div> 
-      {% endfor %} 
-    </div>  
-  </div> 
+  <div class="container py-4 ">
 
+    <img src="{{destination.image}}" class="img-fluid test text-center rounded mb-3" width="800" height="500" role="img">    
+
+    
+    <div class="container mb-2">
+      <div class="row">
+        <div class="col-8">
+          <ul class="list-group list-group-flush text-start">
+            <li class="list-group-item rounded shadow mb-3">
+            <h3><b>{{destination.name}}</b></h3>   
+            <h4>Status</h4>
+            <h6 class="link-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z"></path>
+            </svg>{{destination.venue}}
+          </h6>
+
+            <h6>Date and Time</h6>
+            </li>
+            <li class="list-group-item rounded shadow mb-3">
+              <h4>Description</h4>  
+              <p>{{destination.description}}</p>  
+            </li>
+            <li class="list-group-item rounded shadow mb-3">
+              <h4>Comments</h4>  
+              <div class="form-floating">
+                <div> 
+                  {{wtf.render_form(form,"/destinations/{0}/comment".format(destination.id))}} 
+                  {% for comment in destination.comments %}
+                  <div class="col-md-12">  
+                    <b>{{comment.user.name}} <span class="ml-2 text-muted"></span></b>{{comment.created_at}}
+                    <p>{{comment.text}}</p>  
+                  </div> 
+                  {% endfor %} 
+                </div>  
+              </div> 
+              </div>
+              
+
+
+
+
+        
+
+        
+        
+
+
+
+        <div class="col-4 ">
+          <div class="card shadow">
+            
+            <div class="card-body">
+              <h2 class="card-title text-center">Buy Tickets</h2>
+          
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item "><h6>Regular</h6>$10.00<select class="form-select mb-4 form-select-sm w-50 mx-auto" id="inputGroupSelect03" aria-label="Example select with button addon">
+                  <option selected>0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select></li>
+
+                <li class="list-group-item ">
+                  <h3 class="card-title text-center">Total Price</h3>
+                  <h4 class="card-title text-center">$100.00</h4>
+                  <br>
+                  <button class="btn btn-primary text-center mb-2" style="width: 100%" type="button">Buy</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+
+          
+
+
+        </div>
+
+
+        
+      </div>
+    </div>
+</div>    
+
+
+
+
+  `
 
 </div>
 </div>
