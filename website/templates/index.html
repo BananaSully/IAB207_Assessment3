@@ -139,26 +139,21 @@
           <label for="floatingInputGroup1">Search</label>
           <button type="submit" class="flex-shrink-1 btn btn-primary">Search</button>
         </form>
+        
   </div>
 
 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-3">
     <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Music Genre</button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Rock</a></li>
-          <li><a class="dropdown-item" href="#">Jazz</a></li>
-          <li><a class="dropdown-item" href="#">Pop</a></li>
-          <li><a class="dropdown-item" href="#">...</a></li>
-        </ul>
+      <form class="form-floating form-inline d-flex flex-nowrap" action="{{url_for('main.Options')}}" >
+        <input type="text" class="flex-shrink-3 btn" name="Options"placeholder="Search Event genres">
+      
+      </form>
     </div>
     <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Status</button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Upcoming</a></li>
-          <li><a class="dropdown-item" href="#">Inactive</a></li>
-          <li><a class="dropdown-item" href="#">Booked</a></li>
-          <li><a class="dropdown-item" href="#">Cancelled</a></li>
-        </ul>
+      <form class="form-floating form-inline d-flex flex-nowrap" action="{{url_for('main.Options')}}" >
+        <input type="text" name="Options"placeholder="Search Event genres">
+        <button type="submit" class="flex-shrink-1 btn btn-primary">Search</button>
+      </form>
     </div>
 
 </div>
