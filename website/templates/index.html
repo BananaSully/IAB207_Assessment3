@@ -136,7 +136,7 @@
 <div class="input-group mb-3 ">
         <form class="form-floating form-inline d-flex flex-nowrap" action="{{url_for('main.search')}}" >
           <input type="text" name="search" class="form-control flex-grow-1 my-1 mr-sm-2" id="SearchForm" placeholder="Search Event Titles">
-          <label for="floatingInputGroup1">Search</label>
+          <label for="floatingInputGroup1">Search Event Titles...</label>
           <button type="submit" class="flex-shrink-1 btn btn-primary">Search</button>
         </form>
         
@@ -144,12 +144,14 @@
 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-3">
     <div class="dropdown">
       <form class="form-floating form-inline d-flex flex-nowrap" action="{{url_for('main.Options')}}" >
-        <input type="text" class="flex-shrink-3 btn" name="Options"placeholder="Search Event genres">
+        <input type="text" class="form-control flex-grow-1 my-1 mr-sm-2" placeholder="search" name="Options">
+        <label for="floatingInputGroup1">Search Event Genre...</label>
       </form>
     </div>
     <div class="dropdown">
       <form class="form-floating form-inline d-flex flex-nowrap" action="{{url_for('main.Status')}}" >
-        <input type="text" class="flex-shrink-3 btn" name="Options"placeholder="Search Event Status">
+        <input type="text" class="form-control flex-grow-1 my-1 mr-sm-2" name="Status" placeholder="search">
+        <label for="floatingInputGroup1">Search Event Status...</label>
       </form>
     </div>
 
@@ -157,7 +159,7 @@
 <br><br>
 
 
-<h2>Upcoming Events</h2>
+<h2>Events</h2>
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
   {% for destination in destinations %}
@@ -174,12 +176,11 @@
       <div class="row">
         <div class="col-sm-3">
           <div class="card-body">
-          <h4 class="card-title mid">SEP<br>1</h4>
           </div>
         </div>
         <div class="col">
           <div class="card-body">
-            <h5 class="card-title panel">{{destination.name}}</h5>
+            <h3 class="card-title panel">{{destination.name}}</h3>
             <h6 class="card-text">{{destination.overview}}</h6>
             <h6 class="card-text">{{destination.venue}}</h6>
           </div>
