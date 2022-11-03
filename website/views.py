@@ -5,7 +5,7 @@ mainbp = Blueprint('main', __name__)
 
 @mainbp.route('/')
 def index():
-    Events = Events.query.all()    
+    Event = Events.query.all()    
     return render_template('index.html', Events=Events)
 
 @mainbp.route('/search')
