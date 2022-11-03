@@ -57,7 +57,7 @@
   
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li><a href="/" class="nav-link px-5 link-secondary">Home</a></li>
-            <li><a href="{{ url_for('event.create') }}" class="nav-link px-2 link-secondary">Create An Event</a></li>
+            <li><a href="{{ url_for('Event.create') }}" class="nav-link px-2 link-secondary">Create An Event</a></li>
           </ul>
   
           <form class="form-inline d-flex flex-nowrap" action="{{url_for('main.search')}}" >
@@ -218,7 +218,7 @@
           <div class="col">
             <div class="card-body">
               <h5 class="card-title panel">{{Events.name}}</h5>
-              <h6 class="card-text">{{Eevents.description}}</h6>
+              <h6 class="card-text">{{Events.description}}</h6>
               <h6 class="card-text">Location</h6>
             </div>
           </div>
