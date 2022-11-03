@@ -59,11 +59,6 @@
             <li><a href="/" class="nav-link px-5 link-secondary">Home</a></li>
             <li><a href="{{ url_for('destination.create') }}" class="nav-link px-2 link-secondary">Create An Event</a></li>
           </ul>
-
-          <form class="form-inline d-flex flex-nowrap" action="{{url_for('main.search')}}" >
-            <input type="text" name="search" class="form-control flex-grow-1 my-1 mr-sm-2" placeholder="Search Event Name..." id="SearchForm">
-            <button type="submit" class="flex-shrink-1 btn btn-primary my-1">Search</button>
-          </form>
   
           <div class="dropdown text-end">
             <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -142,14 +137,9 @@
         <form class="form-floating form-inline d-flex flex-nowrap" action="{{url_for('main.search')}}" >
           <input type="text" name="search" class="form-control flex-grow-1 my-1 mr-sm-2" id="SearchForm" placeholder="Search Something">
           <label for="floatingInputGroup1">Search</label>
-          <button type="submit" class="flex-shrink-1 btn btn-primary">Submit</button>
-          
+          <button type="submit" class="flex-shrink-1 btn btn-primary">Search</button>
         </form>
   </div>
-
-
-
-
 
 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-3">
     <div class="dropdown">
