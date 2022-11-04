@@ -44,8 +44,9 @@ def search():
     
 @mainbp.route('/delete_result')
 def delete_result():
+    id = request.form['destination.id']
     destinations = Destination.query.filter(Destination.id == id).first()
-    db.session.delete(Destination)
+    db.session.delete(destinations)
     db.session.commit()
     message = f"The Event {Destination.name} has been deleted from the database."
     return render_template('index.html', message=message)
