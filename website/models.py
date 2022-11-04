@@ -15,22 +15,6 @@ class User(db.Model, UserMixin):
     comments = db.relationship('Comment', backref='user')
     destination = db.relationship('Destination', backref='user')
     ticket = db.relationship('Ticket', backref='user')
-    
-class Destination(db.Model):
-    __tablename__='destinations'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), index=True, unique=True, nullable=False)
-    venue = db.Column(db.String(80), index=True, nullable=False)
-    genre = db.Column(db.Integer, nullable=False)
-    ticketPrice = db.Column(db.String(5), index=True, nullable=False)
-    overview = db.Column(db.Integer, nullable=False)
-    description = db.Column(db.String(200), index=True, nullable=False)
-    image = db.Column(db.String(400), index=True, nullable=False)
-
-    
-    
-
-
 
 class Destination(db.Model):
     __tablename__ = 'destinations'
@@ -48,9 +32,6 @@ class Destination(db.Model):
     # ... Create the Comments db.relationship
 	# relation to call destination.comments and comment.destination
     comments = db.relationship('Comment', backref='destination')
-    
-
-    
 	
     def __repr__(self): #string print method
         return "<Name: {}>".format(self.name)

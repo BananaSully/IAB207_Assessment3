@@ -41,26 +41,5 @@ def search():
     else:
         return redirect(url_for('main.index'))
     
-@mainbp.route('/edit_or_delete', methods=['POST'])
-def edit_or_delete():
-    id = request.form['id']
-    choice = request.form['choice']
-    sock = Destination.query.filter(Destination.id == id).first()
-    # two forms in this template
-    form1 = AddRecord()
-    form2 = DeleteForm()
-    return render_template('edit_or_delete.html', sock=sock, form1=form1, form2=form2, choice=choice)
 
-@mainbp.route('/delete_result', methods=['POST'])
-def delete_result():
-    id = request.form['id_field']
-    purpose = request.form['purpose']
-    sock = Destination.query.filter(Destination.id == id).first()
-    if purpose == 'delete':
-        db.session.delete(Destination)
-        db.session.commit()
-        message = f"The sock {Destination.name} has been deleted from the database."
-        return render_template('result.html', message=message)
-    else:
-        abort(405)
     
