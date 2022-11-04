@@ -35,6 +35,7 @@ class Destination(db.Model):
     # ... Create the Comments db.relationship
 	# relation to call destination.comments and comment.destination
     comments = db.relationship('Comment', backref='destination')
+    ticket = db.relationship('Ticket', backref='destination')
     
 
     
