@@ -15,6 +15,8 @@ class User(db.Model, UserMixin):
     comments = db.relationship('Comment', backref='user')
     destination = db.relationship('Destination', backref='user')
     ticket = db.relationship('Ticket', backref='user')
+    
+
 
 
 class Destination(db.Model):
