@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect,url_for
 from .models import Destination 
+from . import db, app
 
 mainbp = Blueprint('main', __name__)
 
@@ -41,16 +42,12 @@ def search():
     else:
         return redirect(url_for('main.index'))
     
-@mainbp.route('/delete_result', methods=['POST'])
+@mainbp.route('/delete_result')
 def delete_result():
-    id = request.form['id_field']
-    purpose = request.form['purpose']
-    sock = Destination.query.filter(Destination.id == id).first()
-    if purpose == 'delete':
-        db.session.delete(Destination)
-        db.session.commit()
-        message = f"The Event {Destination.name} has been deleted from the database."
-        return render_template('index.html', message=message)
-    else:
-        abort(405)
+    destinations = Destination.query.filter(Destination.id == id).first()
+    db.session.delete(Destination)
+    db.session.commit()
+    message = f"The Event {Destination.name} has been deleted from the database."
+    return render_template('index.html', message=message)
+    
     

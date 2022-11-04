@@ -111,7 +111,9 @@
             </svg>{{destination.venue}}
           </h6>
           <h6>Genre: {{destination.genre}}</h6>
-            
+          <form class="form-floating form-inline d-flex flex-nowrap" action="{{ url_for('main.delete_result') }}">
+            <button type="submit" class="btn btn-primary text-center mb-2" style="width: 100%" type="button">Delete Event</button>
+          </form>
             </li>
             <li class="list-group-item rounded shadow mb-3">
               <h4>Description</h4>  
