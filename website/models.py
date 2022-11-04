@@ -16,8 +16,6 @@ class User(db.Model, UserMixin):
     destination = db.relationship('Destination', backref='user')
     ticket = db.relationship('Ticket', backref='user')
     
-    
-    
 
 
 
@@ -63,8 +61,7 @@ class Comment(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(400))
-    created_at = db.Column(db.DateTime, default=datetime.now())
-    #created_at = created_at.strftime("%Y-%m-%d")
+    created_at = db.Column(db.String, default=datetime.now().strftime('%d %B %Y'))
     #add the foreign keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     destination_id = db.Column(db.Integer, db.ForeignKey('destinations.id'))
