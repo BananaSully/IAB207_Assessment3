@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
     destination = db.relationship('Destination', backref='user')
     ticket = db.relationship('Ticket', backref='user')
 
+
 class Destination(db.Model):
     __tablename__ = 'destinations'
     id = db.Column(db.Integer, primary_key=True)
@@ -32,6 +33,9 @@ class Destination(db.Model):
     # ... Create the Comments db.relationship
 	# relation to call destination.comments and comment.destination
     comments = db.relationship('Comment', backref='destination')
+    
+
+    
 	
     def __repr__(self): #string print method
         return "<Name: {}>".format(self.name)
