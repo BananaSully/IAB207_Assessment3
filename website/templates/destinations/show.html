@@ -94,7 +94,7 @@
   <div class="container py-4 ">
 
     <img src="{{destination.image}}" class="img-fluid test text-center rounded mb-3" width="800" height="500" role="img">    
-
+    
     
     <div class="container mb-2">
       <div class="row">
@@ -127,7 +127,7 @@
                     <b>{{comment.user.name}} <span class="ml-2 text-muted"></span></b>{{comment.created_at}}
                     <p>{{comment.text}}</p>  
                   </div> 
-                  {% endfor %} 
+                  {% endfor %}
                 </div>  
               </div> 
               </div>
@@ -136,9 +136,6 @@
 
 
 
-        
-
-        
         
 
 
@@ -152,7 +149,7 @@
               <ul class="list-group list-group-flush">
 
 
-                <li class="list-group-item "><h6>Regular</h6>{{destination.ticketPrice}}<select class="form-select mb-4 form-select-sm w-50 mx-auto" id="inputGroupSelect03" aria-label="Example select with button addon">
+                <li class="list-group-item "><h6>Regular</h6>${{destination.ticketPrice}}<select class="form-select mb-4 form-select-sm w-50 mx-auto" id="inputGroupSelect03" aria-label="Example select with button addon">
                   <option selected>0</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -168,7 +165,8 @@
 
                 <li class="list-group-item ">
                   <h3 class="card-title text-center">Total Price</h3>
-                  <h4 class="card-title text-center">{{destination.ticketPrice}}</h4>
+                  <h4 class="card-title text-center">${{destination.ticketPrice}}</h4>
+                  <h4 class="card-title text-center">${{destination.total}}</h4>
                   <br>
                   <button class="btn btn-primary text-center mb-2" style="width: 100%" type="button">Buy</button>
                 </li>

@@ -14,9 +14,6 @@ class User(db.Model, UserMixin):
     # relation to call user.comments and comment.created_by
     comments = db.relationship('Comment', backref='user')
     destination = db.relationship('Destination', backref='user')
-    ticket = db.relationship('Ticket', backref='user')
-    
-    
     
 
 
@@ -37,6 +34,7 @@ class Destination(db.Model):
     # ... Create the Comments db.relationship
 	# relation to call destination.comments and comment.destination
     comments = db.relationship('Comment', backref='destination')
+    #ticket = db.relationship('Ticket', backref='destination')
     
 
     
@@ -50,8 +48,6 @@ class Ticket(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     total = db.Column(db.String(10))
     user_id = db.Column(db.String(3), db.ForeignKey('users.id'))
-    
-    
 
     
 	

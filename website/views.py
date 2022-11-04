@@ -41,6 +41,16 @@ def search():
     else:
         return redirect(url_for('main.index'))
     
-
-    
+@mainbp.route('/delete_result', methods=['POST'])
+def delete_result():
+    id = request.form['id_field']
+    purpose = request.form['purpose']
+    sock = Destination.query.filter(Destination.id == id).first()
+    if purpose == 'delete':
+        db.session.delete(Destination)
+        db.session.commit()
+        message = f"The Event {Destination.name} has been deleted from the database."
+        return render_template('index.html', message=message)
+    else:
+        abort(405)
     
