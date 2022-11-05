@@ -50,4 +50,3 @@ def delete_result(id):
     db.session.commit()
     return render_template('index.html')
     
-    
