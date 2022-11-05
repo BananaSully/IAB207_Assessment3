@@ -48,6 +48,7 @@ class Ticket(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     total = db.Column(db.Integer)
     user_id = db.Column(db.String(3), db.ForeignKey('users.id'))
+    destination_id = db.Column(db.Integer)
 
     
 	
