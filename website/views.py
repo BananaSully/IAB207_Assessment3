@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect,url_for
 from .models import Destination 
 from . import db, app
+from flask_login import login_required, current_user
 
 mainbp = Blueprint('main', __name__)
 

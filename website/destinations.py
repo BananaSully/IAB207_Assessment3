@@ -75,12 +75,15 @@ def comment(destination):
 
 @bp.route('<destination>/tickets', methods = ['GET', 'POST'])
 @login_required
-def purchase_tickets(ticket):
+def purchase_tickets(destination):
   print('Method type: ', request.method)
   form = TicketForm()
+  event_id = Destination.query.filter_by(id=destination).first() 
   if form.validate_on_submit():
     #call the function that checks and returns image
-    ticket=Ticket(id=form.id.data,total=form.total.data,user=current_user)
+    ticket=Ticket(id=form.event_id.data,
+                  total=form.total.data,
+                  user=current_user)
 
     #id = request.form['id']
     #total = request.form['total']

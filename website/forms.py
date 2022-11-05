@@ -27,8 +27,8 @@ class DestinationForm(FlaskForm):
 
 
 class TicketForm(FlaskForm):
-  id = StringField('Ticket ID', validators=[InputRequired()])
-  total = StringField('Total Ticket Price', validators=[InputRequired()])
+  #id = StringField('Ticket ID', validators=[InputRequired()])
+  total = StringField('Total number of tickets', validators=[InputRequired()])
   submit = SubmitField("Buy Tickets")
   
 
