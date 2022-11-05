@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect,url_for
+from flask import Blueprint, render_template, request, redirect,url_for, flash
 from .models import Destination 
 from . import db, app
 
@@ -42,13 +42,11 @@ def search():
     else:
         return redirect(url_for('main.index'))
     
-@mainbp.route('/delete_result')
-def delete_result():
-    id = request.form['destination.id']
-    destinations = Destination.query.filter(Destination.id == id).first()
-    db.session.delete(destinations)
+@mainbp.route('/delete/<int:id>')
+def delete_result(id):
+    event_to_delete = Destination.query.get(id)
+    db.session.delete(event_to_delete)
     db.session.commit()
-    message = f"The Event {Destination.name} has been deleted from the database."
-    return render_template('index.html', message=message)
+    return render_template('index.html')
     
     
