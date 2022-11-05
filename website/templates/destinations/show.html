@@ -147,40 +147,17 @@
             
             <div class="card-body">
               <h2 class="card-title text-center">Buy Tickets</h2>
-          
+              <h4 class="card-title text-center">Ticket price: ${{destination.ticketPrice}}</h4>
               <ul class="list-group list-group-flush">
-
-
-                <li class="list-group-item "><h6>Regular</h6>${{destination.ticketPrice}}<select class="form-select mb-4 form-select-sm w-50 mx-auto" id="inputGroupSelect03" aria-label="Example select with button addon">
-                  <option selected>0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select></li>
-                
                 <li class="list-group-item ">
-                  <h3 class="card-title text-center">Total Price</h3>
-                  <h4 class="card-title text-center">${{destination.ticketPrice}}</h4>
                   <div>
                     {{wtf.render_form(form2,"/destinations/{0}/tickets".format(destination.id))}}
                   </div>
-                  
                   <br>
-                  <button class="btn btn-primary text-center mb-2" style="width: 100%" type="button">Buy</button>
                 </li>
               </ul>
             </div>
-          </div>
-
-
-          
+          </div>        
 
 
         </div>
