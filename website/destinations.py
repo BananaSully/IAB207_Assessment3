@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from .models import Destination, Comment
-from .forms import DestinationForm, CommentForm
+from .models import Destination, Comment, Ticket
+from .forms import DestinationForm, CommentForm, TicketForm
 from . import db, app
 import os
 from werkzeug.utils import secure_filename
@@ -12,9 +12,11 @@ bp = Blueprint('destination', __name__, url_prefix='/destinations')
 @bp.route('/<id>')
 def show(id):
     destination = Destination.query.filter_by(id=id).first()
+    ticket = Ticket.query.filter_by(id=id).first()
     # create the comment form
     cform = CommentForm()    
-    return render_template('destinations/show.html', destination=destination, form=cform)
+    tform = TicketForm()
+    return render_template('destinations/show.html', destination=destination, form1=cform, ticket=ticket, form2=tform)
 
 @bp.route('/create', methods = ['GET', 'POST'])
 @login_required
@@ -70,4 +72,24 @@ def comment(destination):
       print('Your comment has been added', 'success') 
     # using redirect sends a GET request to destination.show
     return redirect(url_for('destination.show', id=destination))
-    
+
+@bp.route('<destination>/tickets', methods = ['GET', 'POST'])
+@login_required
+def purchase_tickets(ticket):
+  print('Method type: ', request.method)
+  form = TicketForm()
+  if form.validate_on_submit():
+    #call the function that checks and returns image
+    ticket=Ticket(id=form.id.data,total=form.total.data,user=current_user)
+
+    #id = request.form['id']
+    #total = request.form['total']
+    #user = request.form['current']
+    # add the object to the db session
+    db.session.add(ticket)
+    # commit to the database
+    db.session.commit()
+    print('Successfully created new ticket', 'success')
+    #Always end with redirect when form is valid
+    return redirect(url_for('destination.show', id=ticket))
+  #return render_template('ticket/show.html', form=form, ticket=ticket, tickets=tickets)

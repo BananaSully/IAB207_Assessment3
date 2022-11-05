@@ -121,7 +121,7 @@
               <h4>Comments</h4>  
               <div class="form-floating">
                 <div> 
-                  {{wtf.render_form(form,"/destinations/{0}/comment".format(destination.id))}} 
+                  {{wtf.render_form(form1,"/destinations/{0}/comment".format(destination.id))}} 
                   {% for comment in destination.comments %}
                   <div class="col-md-12">  
                     <b>{{comment.user.name}} <span class="ml-2 text-muted"></span></b>{{comment.created_at}}
@@ -162,11 +162,14 @@
                   <option value="9">9</option>
                   <option value="10">10</option>
                 </select></li>
-
+                
                 <li class="list-group-item ">
                   <h3 class="card-title text-center">Total Price</h3>
                   <h4 class="card-title text-center">${{destination.ticketPrice}}</h4>
-                  <h4 class="card-title text-center">${{destination.total}}</h4>
+                  <div>
+                    {{wtf.render_form(form2,"/destinations/{0}/tickets".format(destination.id))}}
+                  </div>
+                  
                   <br>
                   <button class="btn btn-primary text-center mb-2" style="width: 100%" type="button">Buy</button>
                 </li>

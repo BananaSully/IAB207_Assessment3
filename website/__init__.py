@@ -39,6 +39,8 @@ def create_app():
     app.register_blueprint(destinations.bp)
     from . import auth
     app.register_blueprint(auth.bp)
+    #from . import ticket
+    #app.register_blueprint(ticket.bp)
 
     return app
     

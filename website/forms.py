@@ -29,7 +29,7 @@ class DestinationForm(FlaskForm):
 class TicketForm(FlaskForm):
   id = StringField('Ticket ID', validators=[InputRequired()])
   total = StringField('Total Ticket Price', validators=[InputRequired()])
-  
+  submit = SubmitField("Buy Tickets")
   
 
 submit = SubmitField("Create")
