@@ -78,12 +78,12 @@ def comment(destination):
 def purchase_tickets(destination):
   print('Method type: ', request.method)
   form = TicketForm()
-  event_id = Destination.query.filter_by(id=destination).first() 
   if form.validate_on_submit():
+    event_id = Destination.query.filter_by(id=destination).first() 
     #call the function that checks and returns image
-    ticket=Ticket(id=form.event_id.data,
-                  total=form.total.data,
-                  user=current_user)
+    ticket=Ticket(total=form.total.data,
+                  user_id=current_user,
+                  id=event_id)
 
     #id = request.form['id']
     #total = request.form['total']
