@@ -111,11 +111,14 @@
             </svg>{{destination.venue}}
           </h6>
           <h6>Genre: {{destination.genre}}</h6>
-          
+          {% if current_user.is_authenticated %}
           <a href="{{ url_for('main.delete_result', id=destination.id)}}">
             <button type="submit" class="btn btn-primary text-center mb-2" style="width: 100%" type="button">Delete Event</button>
-        </a>
-            </li>
+        </a>  
+        {% else %}
+          <button disabled class="btn btn-primary text-center mb-2" style="width: 100%" type="button">Sign in to Delete Event</button>
+          {% endif %}    
+        </li>
             <li class="list-group-item rounded shadow mb-3">
               <h4>Description</h4>  
               <p>{{destination.description}}</p>  
