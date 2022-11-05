@@ -46,8 +46,9 @@ class Destination(db.Model):
 class Ticket(db.Model):
     __tablename__ = 'ticket'
     id = db.Column(db.Integer, primary_key=True)
-    total = db.Column(db.String(10))
+    total = db.Column(db.Integer)
     user_id = db.Column(db.String(3), db.ForeignKey('users.id'))
+    destination_id = db.Column(db.Integer)
 
     
 	
