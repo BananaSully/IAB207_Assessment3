@@ -81,9 +81,10 @@ def purchase_tickets(destination):
   if form.validate_on_submit():
     event_id = Destination.query.filter_by(id=destination).first() 
     #call the function that checks and returns image
-    ticket=Ticket(total=form.total.data,
+    ticket=Ticket(id=event_id,
+                  total=form.total.data,
                   user_id=current_user,
-                  id=event_id)
+                  )
 
     #id = request.form['id']
     #total = request.form['total']
@@ -94,5 +95,5 @@ def purchase_tickets(destination):
     db.session.commit()
     print('Successfully created new ticket', 'success')
     #Always end with redirect when form is valid
-    return redirect(url_for('destination.show', id=ticket))
+    return redirect(url_for('destination.show', id=destination))
   #return render_template('ticket/show.html', form=form, ticket=ticket, tickets=tickets)
